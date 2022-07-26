@@ -1,0 +1,23 @@
+{
+  "name": "personal-website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/indra120/dumbways-b38-ch2.git"
+  },
+  "keywords": [],
+  "author": "indra120",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/indra120/dumbways-b38-ch2/issues"
+  },
+  "homepage": "https://github.com/indra120/dumbways-b38-ch2#readme",
+  "dependencies": {
+    "bootstrap": "^5.2.0"
+  }
+}
