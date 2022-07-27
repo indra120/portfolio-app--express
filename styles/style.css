@@ -87,4 +87,39 @@ a {
 .profile-picture {
   border-radius: 1rem 1rem 0 0;
 }
+
+.upload input {
+  padding: 0.25rem;
+  margin: 0;
+  border: 2.5px solid #ff9800;
+  width: 100%;
+  border-radius: 1.5rem;
+  cursor: pointer;
+  color: #ff3d00;
+}
+
+.upload input::-webkit-file-upload-button {
+  cursor: pointer;
+  border: none;
+  color: #fff;
+  padding: 0.4rem 1rem;
+  border-radius: 1.5rem;
+  background: -webkit-gradient(linear, left top, right top, from(#ff3d00), to(#ff9800));
+  background: linear-gradient(to right, #ff3d00, #ff9800);
+}
+
+.upload .icon {
+  top: 0.35rem;
+  right: 0.35rem;
+  width: 38px;
+  height: 38px;
+  cursor: pointer;
+  margin-left: 0.5rem;
+  background: -webkit-gradient(linear, left top, right top, from(#ff3d00), to(#ff9800));
+  background: linear-gradient(to right, #ff3d00, #ff9800);
+}
+
+.upload .icon svg {
+  fill: #fff;
+}
 /*# sourceMappingURL=style.css.map */

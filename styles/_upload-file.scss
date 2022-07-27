@@ -1,0 +1,34 @@
+.upload {
+  input {
+    padding: 0.25rem;
+    margin: 0;
+    border: 2.5px solid $light-orange;
+    width: 100%;
+    border-radius: 1.5rem;
+    cursor: pointer;
+    color: $dark-orange;
+
+    &::-webkit-file-upload-button {
+      cursor: pointer;
+      border: none;
+      color: $white;
+      padding: 0.4rem 1rem;
+      border-radius: 1.5rem;
+      background: $gradient;
+    }
+  }
+
+  .icon {
+    top: 0.35rem;
+    right: 0.35rem;
+    width: 38px;
+    height: 38px;
+    cursor: pointer;
+    margin-left: 0.5rem;
+    background: $gradient;
+
+    svg {
+      fill: $white;
+    }
+  }
+}
