@@ -12,11 +12,9 @@ a {
   color: #ff3d00;
   background: #fff;
   border: 2.5px solid #ff9800;
-  border-radius: 1.5rem;
+  border-radius: 1.75rem;
   -webkit-transition: all 500ms;
   transition: all 500ms;
-  -webkit-box-shadow: rgba(255, 61, 0, 0.2) 0px 7px 29px 0px;
-          box-shadow: rgba(255, 61, 0, 0.2) 0px 7px 29px 0px;
   cursor: pointer;
   position: relative;
   padding: 0.7rem 3.5rem 0.7rem 1rem;
@@ -44,7 +42,6 @@ a {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  margin-left: 0.5rem;
   -webkit-transition: all 300ms;
   transition: all 300ms;
   background: -webkit-gradient(linear, left top, right top, from(#ff3d00), to(#ff9800));
@@ -65,5 +62,28 @@ a {
 .navbar .container .navbar-brand img {
   width: 44px;
   height: auto;
+}
+
+@media screen and (max-width: 768px) {
+  .profile,
+  .picture {
+    width: 100%;
+  }
+}
+
+.social-media a img {
+  width: 36px;
+}
+
+@media screen and (max-width: 768px) {
+  .social-media {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
+.profile-picture {
+  border-radius: 1rem 1rem 0 0;
 }
 /*# sourceMappingURL=style.css.map */

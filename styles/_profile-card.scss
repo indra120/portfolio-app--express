@@ -1,0 +1,22 @@
+.profile,
+.picture {
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
+}
+
+.social-media {
+  a {
+    img {
+      width: 36px;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    justify-content: center;
+  }
+}
+
+.profile-picture {
+  border-radius: 1rem 1rem 0 0;
+}
