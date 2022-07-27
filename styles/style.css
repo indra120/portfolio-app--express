@@ -1,6 +1,7 @@
 body {
   font-family: "Roboto", sans-serif;
   background: #fff;
+  overflow-x: hidden;
 }
 
 a {
