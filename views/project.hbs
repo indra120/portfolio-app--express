@@ -4,12 +4,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="./node_modules/bootstrap/dist/css/bootstrap.min.css"
-    />
-    <link rel="stylesheet" href="./styles/style.css" />
-    <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="./static/styles/bootstrap.min.css" />
+    <link rel="stylesheet" href="./static/styles/style.css" />
+    <script src="./static/scripts/bootstrap.bundle.min.js" defer></script>
     <title>Add Projects</title>
   </head>
   <body>
@@ -27,8 +24,8 @@
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <a class="navbar-brand" href="#">
-          <img src="./assets/images/dumbways.png" alt="" />
+        <a class="navbar-brand" href="./">
+          <img src="./static/assets/images/dumbways.png" alt="" />
         </a>
 
         <div class="collapse navbar-collapse" id="navbar">
@@ -37,7 +34,7 @@
               <a
                 class="nav-link text-white"
                 aria-current="page"
-                href="./index.html"
+                href="./"
                 >Home</a
               >
             </li>
@@ -46,7 +43,7 @@
             </li>
           </ul>
 
-          <a href="./contact.html" class="action-button d-flex align-items-center"
+          <a href="./contact" class="action-button d-flex align-items-center"
             >Contact
             <div class="icon d-flex align-items-center justify-content-center">
               <svg
@@ -67,12 +64,13 @@
 
     <main class="container my-5">
       <div class="d-flex justify-content-center">
-        <form method="post" class="d-flex flex-column align-items-center">
+        <form action="/project" method="post" class="d-flex flex-column align-items-center">
           <h2>Add New Project</h2>
 
           <div class="mb-3 w-100">
             <label for="name" class="form-label h5">Name</label>
             <input
+              name="name"
               type="text"
               class="form-control rounded-pill border-0 shadow-sm"
               id="name"
@@ -85,6 +83,7 @@
             <div class="wrapper w-100">
               <label for="startDate" class="form-label h5">Start Date</label>
               <input
+                name="startDate"
                 type="date"
                 class="form-control rounded-pill border-0 shadow-sm"
                 id="startDate"
@@ -95,6 +94,7 @@
             <div class="wrapper w-100">
               <label for="endDate" class="form-label h5">End Date</label>
               <input
+                name="endDate"
                 type="date"
                 class="form-control rounded-pill border-0 shadow-sm"
                 id="endDate"
@@ -106,6 +106,7 @@
           <div class="mb-4">
             <label for="message" class="form-label h5">Description</label>
             <textarea
+              name="message"
               class="form-control rounded-4 border-0 shadow-sm"
               id="message"
               rows="5"
@@ -122,21 +123,21 @@
                   <div class="wrapper d-flex gap-3">
                     <input class="form-check-input" type="checkbox" value="react" id="react" name="techStack">
                     <label for="react" class="form-check-label d-flex gap-2 align-items-center">
-                      <img src="./assets/icons/react.svg" alt="" />React
+                      <img src="./static/assets/icons/react.svg" alt="" />React
                     </label>
                   </div>
 
                   <div class="wrapper d-flex gap-3">
                     <input class="form-check-input" type="checkbox" value="graphql" id="graphql" name="techStack">
                     <label for="graphql" class="form-check-label d-flex gap-2 align-items-center">
-                      <img src="./assets/icons/graphql.svg" alt="" />GraphQL
+                      <img src="./static/assets/icons/graphql.svg" alt="" />GraphQL
                     </label>
                   </div>
 
                   <div class="wrapper d-flex gap-3">
                     <input class="form-check-input" type="checkbox" value="mongodb" id="mongodb" name="techStack">
                     <label for="mongodb" class="form-check-label d-flex gap-2 align-items-center">
-                      <img src="./assets/icons/mongodb.svg" alt="" />MongoDB
+                      <img src="./static/assets/icons/mongodb.svg" alt="" />MongoDB
                     </label>
                   </div>
                 </div>
@@ -145,21 +146,21 @@
                   <div class="wrapper d-flex gap-3">
                     <input class="form-check-input" type="checkbox" value="nextjs" id="nextjs" name="techStack">
                     <label for="nextjs" class="form-check-label d-flex gap-2 align-items-center">
-                      <img src="./assets/icons/nextjs.svg" alt="" />NextJS
+                      <img src="./static/assets/icons/nextjs.svg" alt="" />NextJS
                     </label>
                   </div>
 
                   <div class="wrapper d-flex gap-3">
                     <input class="form-check-input" type="checkbox" value="redux" id="redux" name="techStack">
                     <label for="redux" class="form-check-label d-flex gap-2 align-items-center">
-                      <img src="./assets/icons/redux.svg" alt="" />Redux
+                      <img src="./static/assets/icons/redux.svg" alt="" />Redux
                     </label>
                   </div>
 
                   <div class="wrapper d-flex gap-3">
                     <input class="form-check-input" type="checkbox" value="mui" id="mui" name="techStack">
                     <label for="mui" class="form-check-label d-flex gap-2 align-items-center">
-                      <img src="./assets/icons/mui.svg" alt="" />Material UI
+                      <img src="./static/assets/icons/mui.svg" alt="" />Material UI
                     </label>
                   </div>
                 </div>
