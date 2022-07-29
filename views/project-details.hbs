@@ -6,7 +6,7 @@
     <link rel='stylesheet' href='/static/styles/bootstrap.min.css' />
     <link rel='stylesheet' href='/static/styles/style.css' />
     <script src='/static/scripts/bootstrap.bundle.min.js' defer></script>
-    <title>Project Details</title>
+    <title>{{project.name}} | Details</title>
   </head>
   <body>
     <header class='navbar navbar-expand-lg shadow-sm'>
@@ -37,7 +37,7 @@
               >Home</a>
             </li>
             <li class='nav-item'>
-              <a class='nav-link text-white' href='../project'>Add Project</a>
+              <a class='nav-link text-white' href='../project'>Project</a>
             </li>
           </ul>
 
@@ -63,7 +63,7 @@
     </header>
 
     <main class='container my-5'>
-      <h2 class='fw-bold'>Blog App</h2>
+      <h2 class='fw-bold'>{{project.name}}</h2>
 
       <div class='row mb-5'>
         <div class='col-12 col-md-8 mb-5 mb-md-0'>
@@ -76,17 +76,17 @@
         <div class='col-12 col-md-4'>
           <div class='d-flex flex-column flex-sm-row flex-md-column gap-3'>
             <div class='wrapper'>
-              <h5 class='fw-bold'>Duration</h5>
+              <h5 class='fw-bold'>Development Time</h5>
 
               <div class='d-flex flex-column gap-2'>
                 <div class='d-flex align-items-center gap-2'>
                   <img src='/static/assets/icons/calendar.svg' alt='' />
-                  <span>6 April 2022 - 6 Jul 2022</span>
+                  <span>{{project.start}} - {{project.finish}}</span>
                 </div>
 
                 <div class='d-flex align-items-center gap-2'>
                   <img src='/static/assets/icons/time.svg' alt='' />
-                  <span>2 months</span>
+                  <span>{{project.devTime}}</span>
                 </div>
               </div>
             </div>
@@ -95,14 +95,16 @@
               <h5 class='fw-bold'>Technologies</h5>
 
               <div class='row'>
-                <div class='col-6 col-md-12 col-lg-6 mb-2'>
-                  <div class='d-flex align-items-center gap-2'>
-                    <img src='/static/assets/icons/nextjs.svg' alt='' />
-                    <span>NextJS</span>
+                {{#each project.techStack}}
+                  <div class='col-6 col-md-12 col-lg-6 mb-2'>
+                    <div class='d-flex align-items-center gap-2'>
+                      <img src='/static/assets/icons/{{this}}.svg' alt='' />
+                      <span>{{this}}</span>
+                    </div>
                   </div>
-                </div>
+                {{/each}}
 
-                <div class='col-6 col-md-12 col-lg-6 mb-2'>
+                {{! <div class='col-6 col-md-12 col-lg-6 mb-2'>
                   <div class='d-flex align-items-center gap-2'>
                     <img src='/static/assets/icons/mui.svg' alt='' />
                     <span>Material UI</span>
@@ -114,37 +116,37 @@
                     <img src='/static/assets/icons/graphql.svg' alt='' />
                     <span>GraphQL</span>
                   </div>
-                </div>
+                </div> }}
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <p style="text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam porro
-        commodi magnam enim inventore temporibus, minus dolorum dolor eaque
-        ipsam quidem non? Illo nihil, placeat, eius facilis aliquid totam sit
-        distinctio perferendis maxime consequuntur assumenda nemo dignissimos
-        repellendus inventore a facere nostrum ad exercitationem modi repellat
-        nisi nesciunt incidunt. Ab nisi, sed inventore similique optio, harum,
-        deleniti eius quam nemo iure quod? Voluptatibus qui ab ipsum inventore,
-        pariatur aperiam enim, sint voluptas et deserunt consectetur porro
-        exercitationem iusto dicta eius. Repellat corrupti facere ipsam ducimus
-        alias accusamus eveniet vitae! Cupiditate atque tenetur, possimus a
-        doloribus mollitia quas repellat in consequuntur dolorum temporibus
-        exercitationem veritatis officiis iste error incidunt repellendus
-        excepturi aliquid modi cum inventore illum. Nisi dicta, provident quo
-        debitis ab veniam dolore repudiandae quos vitae, aliquam culpa hic
-        inventore suscipit tenetur illum quas vel. Iusto molestiae nihil fugit?
-        Dolorem dolor, perferendis velit minima eos sit delectus commodi? Animi,
-        voluptatibus! Praesentium obcaecati dolorem corrupti magni, expedita,
-        eligendi suscipit facere sunt sequi incidunt consectetur, maxime
-        accusantium deleniti reprehenderit eius laboriosam enim. Molestias
-        minima pariatur consequuntur quam maxime, quaerat laudantium optio
-        beatae nisi temporibus non aliquid ut amet eius placeat in
-        necessitatibus sint. Reiciendis sed ullam exercitationem quia expedita
-        sequi laudantium eaque totam voluptatum voluptatem quis esse eius
-        aliquid, non ex animi velit, amet quo explicabo ipsa praesentium, a
+      <p style='text-align: justify;'>Lorem ipsum dolor sit amet consectetur
+        adipisicing elit. Numquam porro commodi magnam enim inventore
+        temporibus, minus dolorum dolor eaque ipsam quidem non? Illo nihil,
+        placeat, eius facilis aliquid totam sit distinctio perferendis maxime
+        consequuntur assumenda nemo dignissimos repellendus inventore a facere
+        nostrum ad exercitationem modi repellat nisi nesciunt incidunt. Ab nisi,
+        sed inventore similique optio, harum, deleniti eius quam nemo iure quod?
+        Voluptatibus qui ab ipsum inventore, pariatur aperiam enim, sint
+        voluptas et deserunt consectetur porro exercitationem iusto dicta eius.
+        Repellat corrupti facere ipsam ducimus alias accusamus eveniet vitae!
+        Cupiditate atque tenetur, possimus a doloribus mollitia quas repellat in
+        consequuntur dolorum temporibus exercitationem veritatis officiis iste
+        error incidunt repellendus excepturi aliquid modi cum inventore illum.
+        Nisi dicta, provident quo debitis ab veniam dolore repudiandae quos
+        vitae, aliquam culpa hic inventore suscipit tenetur illum quas vel.
+        Iusto molestiae nihil fugit? Dolorem dolor, perferendis velit minima eos
+        sit delectus commodi? Animi, voluptatibus! Praesentium obcaecati dolorem
+        corrupti magni, expedita, eligendi suscipit facere sunt sequi incidunt
+        consectetur, maxime accusantium deleniti reprehenderit eius laboriosam
+        enim. Molestias minima pariatur consequuntur quam maxime, quaerat
+        laudantium optio beatae nisi temporibus non aliquid ut amet eius placeat
+        in necessitatibus sint. Reiciendis sed ullam exercitationem quia
+        expedita sequi laudantium eaque totam voluptatum voluptatem quis esse
+        eius aliquid, non ex animi velit, amet quo explicabo ipsa praesentium, a
         eligendi officiis nemo. Itaque, perferendis inventore pariatur ipsum
         saepe incidunt recusandae quos modi neque. Ut dignissimos architecto
         quas dolor sequi provident praesentium laboriosam sed, consequuntur

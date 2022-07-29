@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/static/styles/bootstrap.min.css" />
     <link rel="stylesheet" href="/static/styles/style.css" />
     <script src="/static/scripts/bootstrap.bundle.min.js" defer></script>
-    <title>Add Projects</title>
+    <title>{{#if edit}}Edit{{else}}Add{{/if}} Projects</title>
   </head>
   <body>
     <header class="navbar navbar-expand-lg shadow-sm">
@@ -39,7 +39,7 @@
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white active fw-bold" href="#">Add Project</a>
+              <a class="nav-link text-white active fw-bold" href="/project">Project</a>
             </li>
           </ul>
 
@@ -65,7 +65,7 @@
     <main class="container my-5">
       <div class="d-flex justify-content-center">
         <form action="/project" method="post" class="d-flex flex-column align-items-center">
-          <h2>Add New Project</h2>
+          <h2>{{#if edit}}Edit Existing{{else}}Add New{{/if}} Project</h2>
 
           <div class="mb-3 w-100">
             <label for="name" class="form-label h5">Name</label>
@@ -76,6 +76,7 @@
               id="name"
               placeholder="Your name"
               required
+              {{#if project}} value="{{project.name}}" {{/if}}
             />
           </div>
 
@@ -88,6 +89,7 @@
                 class="form-control rounded-pill border-0 shadow-sm"
                 id="startDate"
                 required
+                {{#if project}} value="{{project.startDate}}" {{/if}}
               />
             </div>
 
@@ -99,19 +101,20 @@
                 class="form-control rounded-pill border-0 shadow-sm"
                 id="endDate"
                 required
+                {{#if project}} value="{{project.endDate}}" {{/if}}
               />
             </div>
           </div>
 
           <div class="mb-4">
-            <label for="message" class="form-label h5">Description</label>
+            <label for="description" class="form-label h5">Description</label>
             <textarea
-              name="message"
+              name="description"
               class="form-control rounded-4 border-0 shadow-sm"
-              id="message"
+              id="description"
               rows="5"
               cols="40"
-            ></textarea>
+            >{{#if project}}{{project.description}}{{/if}}</textarea>
           </div>
 
           <div class="mb-3 w-100">
@@ -121,46 +124,46 @@
               <div class="row">
                 <div class="col-6 d-flex flex-column gap-3">
                   <div class="wrapper d-flex gap-3">
-                    <input class="form-check-input" type="checkbox" value="react" id="react" name="techStack">
-                    <label for="react" class="form-check-label d-flex gap-2 align-items-center">
-                      <img src="/static/assets/icons/react.svg" alt="" />React
+                    <input class="form-check-input" type="checkbox" value="React" id="React" name="techStack">
+                    <label for="React" class="form-check-label d-flex gap-2 align-items-center">
+                      <img src="/static/assets/icons/React.svg" alt="" />React
                     </label>
                   </div>
 
                   <div class="wrapper d-flex gap-3">
-                    <input class="form-check-input" type="checkbox" value="graphql" id="graphql" name="techStack">
-                    <label for="graphql" class="form-check-label d-flex gap-2 align-items-center">
-                      <img src="/static/assets/icons/graphql.svg" alt="" />GraphQL
+                    <input class="form-check-input" type="checkbox" value="GraphQL" id="GraphQL" name="techStack">
+                    <label for="GraphQL" class="form-check-label d-flex gap-2 align-items-center">
+                      <img src="/static/assets/icons/GraphQL.svg" alt="" />GraphQL
                     </label>
                   </div>
 
                   <div class="wrapper d-flex gap-3">
-                    <input class="form-check-input" type="checkbox" value="mongodb" id="mongodb" name="techStack">
-                    <label for="mongodb" class="form-check-label d-flex gap-2 align-items-center">
-                      <img src="/static/assets/icons/mongodb.svg" alt="" />MongoDB
+                    <input class="form-check-input" type="checkbox" value="MongoDB" id="MongoDB" name="techStack">
+                    <label for="MongoDB" class="form-check-label d-flex gap-2 align-items-center">
+                      <img src="/static/assets/icons/MongoDB.svg" alt="" />MongoDB
                     </label>
                   </div>
                 </div>
 
                 <div class="col-6 d-flex flex-column gap-3">
                   <div class="wrapper d-flex gap-3">
-                    <input class="form-check-input" type="checkbox" value="nextjs" id="nextjs" name="techStack">
-                    <label for="nextjs" class="form-check-label d-flex gap-2 align-items-center">
-                      <img src="/static/assets/icons/nextjs.svg" alt="" />NextJS
+                    <input class="form-check-input" type="checkbox" value="NextJS" id="NextJS" name="techStack">
+                    <label for="NextJS" class="form-check-label d-flex gap-2 align-items-center">
+                      <img src="/static/assets/icons/NextJS.svg" alt="" />NextJS
                     </label>
                   </div>
 
                   <div class="wrapper d-flex gap-3">
-                    <input class="form-check-input" type="checkbox" value="redux" id="redux" name="techStack">
-                    <label for="redux" class="form-check-label d-flex gap-2 align-items-center">
-                      <img src="/static/assets/icons/redux.svg" alt="" />Redux
+                    <input class="form-check-input" type="checkbox" value="Redux" id="Redux" name="techStack">
+                    <label for="Redux" class="form-check-label d-flex gap-2 align-items-center">
+                      <img src="/static/assets/icons/Redux.svg" alt="" />Redux
                     </label>
                   </div>
 
                   <div class="wrapper d-flex gap-3">
-                    <input class="form-check-input" type="checkbox" value="mui" id="mui" name="techStack">
-                    <label for="mui" class="form-check-label d-flex gap-2 align-items-center">
-                      <img src="/static/assets/icons/mui.svg" alt="" />Material UI
+                    <input class="form-check-input" type="checkbox" value="Material UI" id="Material UI" name="techStack">
+                    <label for="Material UI" class="form-check-label d-flex gap-2 align-items-center">
+                      <img src="/static/assets/icons/Material UI.svg" alt="" />Material UI
                     </label>
                   </div>
                 </div>
