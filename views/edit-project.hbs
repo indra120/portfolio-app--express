@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/styles/bootstrap.min.css" />
+    <link rel="stylesheet" href="/static/styles/style.css" />
+    <script src="/static/scripts/bootstrap.bundle.min.js" defer></script>
+    <title>Edit Projects</title>
+  </head>
+  <body>
+    <header class="navbar navbar-expand-lg shadow-sm">
+      <nav class="container py-1 px-0 mx-3 mx-md-auto">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbar"
+          aria-controls="navbar"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <a class="navbar-brand" href="./">
+          <img src="/static/assets/images/dumbways.png" alt="" />
+        </a>
+
+        <div class="collapse navbar-collapse" id="navbar">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-3">
+            <li class="nav-item">
+              <a
+                class="nav-link text-white"
+                aria-current="page"
+                href="/"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white active fw-bold" href="/add-project">Project</a>
+            </li>
+          </ul>
+
+          <a href="/contact" class="action-button d-flex align-items-center"
+            >Contact
+            <div class="icon d-flex align-items-center justify-content-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M14.89 23.654c-7.367 3.367-18.802-18.86-11.601-22.615l2.107-1.039 3.492 6.817-2.082 1.026c-2.189 1.174 2.37 10.08 4.609 8.994.091-.041 2.057-1.007 2.064-1.011l3.521 6.795c-.008.004-1.989.978-2.11 1.033zm-1.538-13.409l2.917.87c.223-.747.16-1.579-.24-2.317-.399-.739-1.062-1.247-1.808-1.469l-.869 2.916zm1.804-6.058c1.551.462 2.926 1.516 3.756 3.051.831 1.536.96 3.263.498 4.813l-1.795-.535c.325-1.091.233-2.306-.352-3.387-.583-1.081-1.551-1.822-2.643-2.146l.536-1.796zm.95-3.187c2.365.705 4.463 2.312 5.729 4.656 1.269 2.343 1.466 4.978.761 7.344l-1.84-.548c.564-1.895.406-4.006-.608-5.882-1.016-1.877-2.696-3.165-4.591-3.729l.549-1.841z"
+                />
+              </svg>
+            </div>
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container my-5">
+      <div class="d-flex justify-content-center">
+        <form action="/project/edit/{{project.id}}" method="post" class="d-flex flex-column align-items-center">
+          <h2>Add Project</h2>
+
+          <div class="mb-3 w-100">
+            <label for="name" class="form-label h5">Name</label>
+            <input
+              name="name"
+              type="text"
+              class="form-control rounded-pill border-0 shadow-sm"
+              id="name"
+              placeholder="Your name"
+              required
+              value="{{project.name}}"
+            />
+          </div>
+
+          <div class="mb-3 d-flex gap-3 w-100">
+            <div class="wrapper w-100">
+              <label for="startDate" class="form-label h5">Start Date</label>
+              <input
+                name="startDate"
+                type="date"
+                class="form-control rounded-pill border-0 shadow-sm"
+                id="startDate"
+                required
+                value="{{project.startDate}}"
+              />
+            </div>
+
+            <div class="wrapper w-100">
+              <label for="endDate" class="form-label h5">End Date</label>
+              <input
+                name="endDate"
+                type="date"
+                class="form-control rounded-pill border-0 shadow-sm"
+                id="endDate"
+                required
+                value="{{project.endDate}}"
+              />
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <label for="description" class="form-label h5">Description</label>
+            <textarea
+              name="description"
+              class="form-control rounded-4 border-0 shadow-sm"
+              id="description"
+              rows="5"
+              cols="40"
+            >{{project.description}}</textarea>
+          </div>
+
+          <div class="mb-3 w-100">
+            <fieldset class="card border-0 shadow-sm p-3">
+              <legend class="h5">Tech Stack</legend>
+              
+              <div class="row">
+                <div class="col-6 d-flex flex-column gap-3">
+                  <div class="wrapper d-flex gap-3">
+                    <input class="form-check-input" type="checkbox" value="React" id="React" name="techStack">
+                    <label for="React" class="form-check-label d-flex gap-2 align-items-center">
+                      <img src="/static/assets/icons/React.svg" alt="" />React
+                    </label>
+                  </div>
+
+                  <div class="wrapper d-flex gap-3">
+                    <input class="form-check-input" type="checkbox" value="GraphQL" id="GraphQL" name="techStack">
+                    <label for="GraphQL" class="form-check-label d-flex gap-2 align-items-center">
+                      <img src="/static/assets/icons/GraphQL.svg" alt="" />GraphQL
+                    </label>
+                  </div>
+
+                  <div class="wrapper d-flex gap-3">
+                    <input class="form-check-input" type="checkbox" value="MongoDB" id="MongoDB" name="techStack">
+                    <label for="MongoDB" class="form-check-label d-flex gap-2 align-items-center">
+                      <img src="/static/assets/icons/MongoDB.svg" alt="" />MongoDB
+                    </label>
+                  </div>
+                </div>
+
+                <div class="col-6 d-flex flex-column gap-3">
+                  <div class="wrapper d-flex gap-3">
+                    <input class="form-check-input" type="checkbox" value="NextJS" id="NextJS" name="techStack">
+                    <label for="NextJS" class="form-check-label d-flex gap-2 align-items-center">
+                      <img src="/static/assets/icons/NextJS.svg" alt="" />NextJS
+                    </label>
+                  </div>
+
+                  <div class="wrapper d-flex gap-3">
+                    <input class="form-check-input" type="checkbox" value="Redux" id="Redux" name="techStack">
+                    <label for="Redux" class="form-check-label d-flex gap-2 align-items-center">
+                      <img src="/static/assets/icons/Redux.svg" alt="" />Redux
+                    </label>
+                  </div>
+
+                  <div class="wrapper d-flex gap-3">
+                    <input class="form-check-input" type="checkbox" value="Material UI" id="Material UI" name="techStack">
+                    <label for="Material UI" class="form-check-label d-flex gap-2 align-items-center">
+                      <img src="/static/assets/icons/Material UI.svg" alt="" />Material UI
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="mb-3 w-100 upload">
+            <h3 class="h5">Upload Image</h3>
+            <label for="projectImage" class="position-relative w-100">
+              <input
+                type="file"
+                name="projectImage"
+                class="input"
+                id="projectImage"
+                required
+              />
+              <div class="icon rounded-circle d-flex align-items-center justify-content-center position-absolute">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 5c3.453 0 5.891 2.797 5.567 6.78 1.745-.046 4.433.751 4.433 3.72 0 1.93-1.57 3.5-3.5 3.5h-13c-1.93 0-3.5-1.57-3.5-3.5 0-2.797 2.479-3.833 4.433-3.72-.167-4.218 2.208-6.78 5.567-6.78zm0-2c-4.006 0-7.267 3.141-7.479 7.092-2.57.463-4.521 2.706-4.521 5.408 0 3.037 2.463 5.5 5.5 5.5h13c3.037 0 5.5-2.463 5.5-5.5 0-2.702-1.951-4.945-4.521-5.408-.212-3.951-3.473-7.092-7.479-7.092zm4 10h-3v4h-2v-4h-3l4-4 4 4z"
+                  />
+                </svg>
+              </div>
+            </label>
+          </div>
+
+          <button type="submit" class="action-button d-flex align-items-center">Save Changes
+            <div class="icon d-flex align-items-center justify-content-center">
+              <svg
+                  clip-rule="evenodd"
+                  fill-rule="evenodd"
+                  stroke-linejoin="round"
+                  stroke-miterlimit="2"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="m12.002 2c5.518 0 9.998 4.48 9.998 9.998 0 5.517-4.48 9.997-9.998 9.997-5.517 0-9.997-4.48-9.997-9.997 0-5.518 4.48-9.998 9.997-9.998zm-.747 9.25h-3.5c-.414 0-.75.336-.75.75s.336.75.75.75h3.5v3.5c0 .414.336.75.75.75s.75-.336.75-.75v-3.5h3.5c.414 0 .75-.336.75-.75s-.336-.75-.75-.75h-3.5v-3.5c0-.414-.336-.75-.75-.75s-.75.336-.75.75z"
+                    fill-rule="nonzero"
+                  />
+                </svg>
+            </div>
+          </button type="submit">
+        </form>
+      </div>
+    </main>
+  </body>
+</html>
