@@ -69,7 +69,7 @@
         <div class='col-12 col-md-8 mb-5 mb-md-0'>
           <img
             class='w-100 rounded-4'
-            src='/static/assets/images/project-1.png'
+            src='{{project.image}}'
             alt=''
           />
         </div>
@@ -81,12 +81,12 @@
               <div class='d-flex flex-column gap-2'>
                 <div class='d-flex align-items-center gap-2'>
                   <img src='/static/assets/icons/calendar.svg' alt='' />
-                  <span>{{project.start}} - {{project.finish}}</span>
+                  <span>{{project.start_date}} - {{project.end_date}}</span>
                 </div>
 
                 <div class='d-flex align-items-center gap-2'>
                   <img src='/static/assets/icons/time.svg' alt='' />
-                  <span>{{project.devTime}}</span>
+                  <span>{{project.dev_time}}</span>
                 </div>
               </div>
             </div>
@@ -95,7 +95,7 @@
               <h5 class='fw-bold'>Technologies</h5>
 
               <div class='row'>
-                {{#each project.techStack}}
+                {{#each project.tech_stack}}
                   <div class='col-6 col-md-12 col-lg-6 mb-2'>
                     <div class='d-flex align-items-center gap-2'>
                       <img src='/static/assets/icons/{{this}}.svg' alt='' />
