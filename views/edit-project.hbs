@@ -65,7 +65,7 @@
     <main class="container my-5">
       <div class="d-flex justify-content-center">
         <form action="/project/edit/{{project.id}}" method="post" class="d-flex flex-column align-items-center">
-          <h2>Add Project</h2>
+          <h2>Edit Project</h2>
 
           <div class="mb-3 w-100">
             <label for="name" class="form-label h5">Name</label>
@@ -89,7 +89,7 @@
                 class="form-control rounded-pill border-0 shadow-sm"
                 id="startDate"
                 required
-                value="{{project.startDate}}"
+                value="{{project.start_date}}"
               />
             </div>
 
@@ -101,7 +101,7 @@
                 class="form-control rounded-pill border-0 shadow-sm"
                 id="endDate"
                 required
-                value="{{project.endDate}}"
+                value="{{project.end_date}}"
               />
             </div>
           </div>
@@ -173,12 +173,12 @@
 
           <div class="mb-3 w-100 upload">
             <h3 class="h5">Upload Image</h3>
-            <label for="projectImage" class="position-relative w-100">
+            <label for="image" class="position-relative w-100">
               <input
                 type="file"
-                name="projectImage"
+                name="image"
                 class="input"
-                id="projectImage"
+                id="image"
                 required
               />
               <div class="icon rounded-circle d-flex align-items-center justify-content-center position-absolute">
@@ -212,7 +212,7 @@
                   />
                 </svg>
             </div>
-          </button type="submit">
+          </button>
         </form>
       </div>
     </main>
