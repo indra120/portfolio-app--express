@@ -26,8 +26,11 @@ const editProjectPage = (req, res) => {
 }
 
 const editProject = (req, res) => {
-  const { name, startDate, endDate, description, techStack, image } = req.body
+  let { name, startDate, endDate, description, techStack, image } = req.body
   const { id } = req.params
+  if (typeof techStack === 'string') {
+    techStack = Array(techStack)
+  }
 
   db.connect((error, client, done) => {
     if (error) console.log(error)
@@ -38,9 +41,11 @@ const editProject = (req, res) => {
         startDate
       ).toISOString()}', end_date='${new Date(
         endDate
-      ).toISOString()}', description='${description}', tech_stack=ARRAY[${techStack
-        .map(tech => `'${tech}'`)
-        .join(',')}], image='${image}'
+      ).toISOString()}', description='${description}', tech_stack=ARRAY[${
+        techStack.length
+          ? techStack.map(tech => `'${tech}'`).join(',')
+          : techStack
+      }], image='${image}'
       WHERE id=${Number(id)}`,
       (error, result) => {
         done()
