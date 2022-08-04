@@ -1,8 +1,8 @@
 const db = require('../connection/db.js')
 
-const addProjectPage = (req, res) => {
+const addProjectPage = (req, res, { isLogin }) => {
   if (!isLogin) {
-    res.redirect('/auth')
+    res.redirect('/signup')
     return
   }
   res.render('add-project')

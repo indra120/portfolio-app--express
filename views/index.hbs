@@ -28,22 +28,24 @@
         </a>
 
         <div class='collapse navbar-collapse' id='navbar'>
-          <ul class='navbar-nav me-auto mb-2 mb-lg-0 ms-3'>
+          <ul class='navbar-nav mb-2 mb-lg-0 ms-3 w-100'>
             <li class='nav-item'>
-              <a
-                class='nav-link text-white active fw-bold'
-                aria-current='page'
-                href='#'
-              >Home</a>
+              <a class='nav-link text-white active fw-bold' aria-current='page' href='/'>Home</a>
             </li>
             <li class='nav-item'>
               <a class='nav-link text-white' href='/project/add'>Project</a>
+            </li>
+            <li class='nav-item ms-auto me-0'>
+              <a href='/signup' class='nav-link text-white'>Sign Up</a>
+            </li>
+            <li class='nav-item'>
+              <a href='/signin' class='nav-link text-white'>Sign In</a>
             </li>
           </ul>
 
           <a
             href='/contact'
-            class='action-button d-flex align-items-center'
+            class='action-button d-flex align-items-center me-0 ms-auto'
           >Contact
             <div class='icon d-flex align-items-center justify-content-center'>
               <svg
@@ -183,7 +185,7 @@
                   <a href='./project-details/{{this.id}}'>
                     <img
                       class='project-image w-100'
-                      {{!-- src='/static/assets/images/project-1.png' --}}
+                      {{! src='/static/assets/images/project-1.png' }}
                       src='/static/assets/images/{{this.image}}'
                       alt=''
                     />
@@ -209,7 +211,7 @@
                     {{/each}}
                   </div>
 
-                  {{#if this.isLogin}}
+                  {{#if isLogin}}
                     <div class='d-flex gap-3'>
                       <a
                         href='/project/edit/{{this.id}}'

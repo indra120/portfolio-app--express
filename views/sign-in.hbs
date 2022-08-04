@@ -6,7 +6,7 @@
     <link rel='stylesheet' href='/static/styles/bootstrap.min.css' />
     <link rel='stylesheet' href='/static/styles/style.css' />
     <script src='/static/scripts/bootstrap.bundle.min.js' defer></script>
-    <title>Contact Me</title>
+    <title>Sign In</title>
   </head>
   <body>
     <header class='navbar navbar-expand-lg shadow-sm'>
@@ -28,7 +28,7 @@
         </a>
 
         <div class='collapse navbar-collapse' id='navbar'>
-          <ul class='navbar-nav mb-2 mb-lg-0 ms-3 w-100'>
+          <ul class='navbar-nav me-auto mb-2 mb-lg-0 ms-3'>
             <li class='nav-item'>
               <a
                 class='nav-link text-white'
@@ -39,15 +39,9 @@
             <li class='nav-item'>
               <a class='nav-link text-white' href='/project/add'>Project</a>
             </li>
-            <li class='nav-item ms-auto me-0'>
-              <a href='/signup' class='nav-link text-white'>Sign Up</a>
-            </li>
-            <li class='nav-item'>
-              <a href='/signin' class='nav-link text-white'>Sign In</a>
-            </li>
           </ul>
 
-          <a href='/' class='action-button d-flex align-items-center me-0 ms-auto'>Contact
+          <a href='#' class='action-button d-flex align-items-center'>Contact
             <div class='icon d-flex align-items-center justify-content-center'>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
@@ -68,22 +62,12 @@
     <main class='container my-5'>
       <div class='d-flex justify-content-center'>
         <form
+          action='/signin'
           method='post'
           class='d-flex flex-column align-items-center'
           id='form'
         >
-          <h2>Get in Touch</h2>
-
-          <div class='mb-3 w-100'>
-            <label for='name' class='form-label'>Name</label>
-            <input
-              type='text'
-              class='form-control rounded-pill border-0 shadow-sm'
-              id='name'
-              placeholder='Your name'
-              required
-            />
-          </div>
+          <h2>Sign In</h2>
 
           <div class='mb-3 w-100'>
             <label for='email' class='form-label'>Email</label>
@@ -97,45 +81,20 @@
           </div>
 
           <div class='mb-3 w-100'>
-            <label for='phone' class='form-label'>Phone Number</label>
+            <label for='password' class='form-label'>Password</label>
             <input
-              type='tel'
+              type='password'
               class='form-control rounded-pill border-0 shadow-sm'
-              id='phone'
-              placeholder='Your name'
+              id='password'
+              placeholder='Set your password'
               required
             />
-          </div>
-
-          <div class='mb-3 w-100'>
-            <label for='subject'>Subject</label>
-            <select
-              class='form-select rounded-pill border-0 shadow-sm'
-              aria-label='Default select example'
-              required
-              id="subject"
-            >
-              <option selected hidden>Choose Subject</option>
-              <option>Let's Talk</option>
-              <option>Let's Collaboration</option>
-              <option>I am Hiring</option>
-            </select>
-          </div>
-
-          <div class='mb-4'>
-            <label for='message' class='form-label'>Your Message</label>
-            <textarea
-              class='form-control rounded-4 border-0 shadow-sm'
-              id='message'
-              rows='5'
-              cols='40'
-            ></textarea>
           </div>
 
           <button
             type='submit'
             class='action-button d-flex align-items-center'
-          >Submit
+          >Sign In
             <div class='icon d-flex align-items-center justify-content-center'>
               <svg
                 width='24px'
@@ -162,32 +121,5 @@
         </form>
       </div>
     </main>
-
-    <script>
-      const receiver = 'indrapranata120@gmail.com'
-      const name = document.getElementById('name')
-      const email = document.getElementById('email')
-      const phone = document.getElementById('phone')
-      const subject = document.getElementById('subject')
-      const message = document.getElementById('message')
-      const form = document.getElementById('form')
-
-      form.addEventListener('submit', e => {
-        e.preventDefault()
-        if (name.value == '') return alert('Name input fields must be not empty')
-        if (email.value == '') return alert('Email input fields must be not empty')
-        if (phone.value == '') return alert('Phone input fields must be not empty')
-        if (subject.value == '')
-          return alert('Subject input fields must be not empty')
-        if (message.value == '')
-          return alert('Message input fields must be not empty')
-
-        const a = document.createElement('a')
-
-        a.href = `mailto:${receiver}?subject=${subject.value}&body=Hello my name is ${name.value}, ${subject.value}, ${message.value}`
-        a.target = '_blank'
-        a.click()
-      })
-    </script>
   </body>
 </html>

@@ -1,7 +1,7 @@
 const db = require('../connection/db.js')
 const getDevTime = require('../helpers/getDevTime.js')
 
-const home = (req, res) => {
+const home = (req, res, { isLogin }) => {
   db.connect((error, client, done) => {
     if (error) console.log(error)
 
@@ -12,7 +12,7 @@ const home = (req, res) => {
       const projects = result.rows.map(project => ({
         ...project,
         devTime: getDevTime(project.start_date, project.end_date),
-        isLogin: true,
+        isLogin,
       }))
 
       res.render('index', { projects })
