@@ -30,17 +30,30 @@
         <div class='collapse navbar-collapse' id='navbar'>
           <ul class='navbar-nav mb-2 mb-lg-0 ms-3 w-100'>
             <li class='nav-item'>
-              <a class='nav-link text-white active fw-bold' aria-current='page' href='/'>Home</a>
+              <a
+                class='nav-link text-white active fw-bold'
+                aria-current='page'
+                href='/'
+              >Home</a>
             </li>
             <li class='nav-item'>
               <a class='nav-link text-white' href='/project/add'>Project</a>
             </li>
-            <li class='nav-item ms-auto me-0'>
-              <a href='/signup' class='nav-link text-white'>Sign Up</a>
-            </li>
-            <li class='nav-item'>
-              <a href='/signin' class='nav-link text-white'>Sign In</a>
-            </li>
+            {{#if isLogin}}
+              <li class='nav-item'>
+                <span class='nav-link text-white'>{{user.name}}</span>
+              </li>
+              <li class='nav-item'>
+                <a href='/logout' class='nav-link text-white'>Logout</a>
+              </li>
+            {{else}}
+              <li class='nav-item ms-auto me-0'>
+                <a href='/signup' class='nav-link text-white'>Sign Up</a>
+              </li>
+              <li class='nav-item'>
+                <a href='/signin' class='nav-link text-white'>Sign In</a>
+              </li>
+            {{/if}}
           </ul>
 
           <a
@@ -211,7 +224,7 @@
                     {{/each}}
                   </div>
 
-                  {{#if isLogin}}
+                  {{#if this.isLogin}}
                     <div class='d-flex gap-3'>
                       <a
                         href='/project/edit/{{this.id}}'
