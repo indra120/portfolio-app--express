@@ -39,6 +39,21 @@
             <li class='nav-item'>
               <a class='nav-link text-white' href='/project/add'>Project</a>
             </li>
+            {{#if isLogin}}
+              <li class='nav-item ms-auto me-0'>
+                <span class='nav-link text-white'>{{user.name}}</span>
+              </li>
+              <li class='nav-item'>
+                <a href='/logout' class='nav-link text-white'>Logout</a>
+              </li>
+            {{else}}
+              <li class='nav-item ms-auto me-0'>
+                <a href='/signup' class='nav-link text-white'>Sign Up</a>
+              </li>
+              <li class='nav-item'>
+                <a href='/signin' class='nav-link text-white'>Sign In</a>
+              </li>
+            {{/if}}
           </ul>
 
           <a
@@ -63,15 +78,11 @@
     </header>
 
     <main class='container my-5'>
-      <h2 class='fw-bold'>{{project.name}}</h2>
+      <h2 class='fw-bold'>{{project.title}}</h2>
 
       <div class='row mb-5'>
         <div class='col-12 col-md-8 mb-5 mb-md-0'>
-          <img
-            class='w-100 rounded-4'
-            src='/static/assets/images/{{project.image}}'
-            alt=''
-          />
+          <img class='w-100 rounded-4' src='{{project.image}}' alt='' />
         </div>
         <div class='col-12 col-md-4'>
           <div class='d-flex flex-column flex-sm-row flex-md-column gap-3'>

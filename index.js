@@ -1,6 +1,5 @@
 const express = require('express')
 const path = require('path')
-const bcrypt = require('bcrypt')
 const session = require('express-session')
 const flash = require('express-flash')
 const {
@@ -14,16 +13,16 @@ const {
   signUp,
   signIn,
 } = require('./controllers')
+const upload = require('./middlewares/imageUpload')
 
 const app = express()
 const PORT = 3000
 
 app.set('view engine', 'hbs')
-app.set('views', path.join(__dirname, '/views'))
 
 app.use('/static', express.static(path.join(__dirname, '/public')))
+app.use('/images', express.static(path.join(__dirname, '/images')))
 app.use(express.urlencoded({ extended: false }))
-// app.use(express.json())
 app.use(flash())
 app.use(
   session({
@@ -36,7 +35,10 @@ app.use(
 
 app.get('/', home)
 
-app.get('/contact', (req, res) => res.render('contact'))
+app.get('/contact', (req, res) => {
+  const { isLogin, user } = req.session
+  res.render('contact', { isLogin, user })
+})
 
 app.get('/signup', (req, res) => res.render('sign-up'))
 app.post('/signup', signUp)
@@ -50,12 +52,12 @@ app.get('/logout', (req, res) => {
 })
 
 app.get('/project/add', addProjectPage)
-app.post('/project/add', addProject)
+app.post('/project/add', upload.single('image'), addProject)
 
 app.get('/project/delete/:id', deleteProject)
 
 app.get('/project/edit/:id', editProjectPage)
-app.post('/project/edit/:id', editProject)
+app.post('/project/edit/:id', upload.single('image'), editProject)
 
 app.get('/project-details/:id', details)
 

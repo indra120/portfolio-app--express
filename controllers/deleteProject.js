@@ -2,12 +2,15 @@ const db = require('../connection/db.js')
 
 const deleteProject = (req, res) => {
   const { id } = req.params
-  db.connect((error, client, done) => {
-    if (error) console.log(error)
 
-    client.query(`DELETE FROM tb_projects WHERE id=${id}`, (error, result) => {
+  db.connect((error, client, done) => {
+    if (error) return console.log(error)
+
+    const query = `DELETE FROM tb_projects WHERE id=${id}`
+
+    client.query(query, error => {
+      if (error) return console.log(error)
       done()
-      if (error) console.log(error)
       res.redirect('/')
     })
   })

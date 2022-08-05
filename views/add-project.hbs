@@ -30,7 +30,11 @@
         <div class='collapse navbar-collapse' id='navbar'>
           <ul class='navbar-nav mb-2 mb-lg-0 ms-3 w-100'>
             <li class='nav-item'>
-              <a class='nav-link text-white active fw-bold' aria-current='page' href='/'>Home</a>
+              <a
+                class='nav-link text-white active fw-bold'
+                aria-current='page'
+                href='/'
+              >Home</a>
             </li>
             <li class='nav-item'>
               <a
@@ -38,12 +42,21 @@
                 href='/add-project'
               >Project</a>
             </li>
-            <li class='nav-item ms-auto me-0'>
-              <a href='/signup' class='nav-link text-white'>Sign Up</a>
-            </li>
-            <li class='nav-item'>
-              <a href='/signin' class='nav-link text-white'>Sign In</a>
-            </li>
+            {{#if isLogin}}
+              <li class='nav-item ms-auto me-0'>
+                <span class='nav-link text-white'>{{user.name}}</span>
+              </li>
+              <li class='nav-item'>
+                <a href='/logout' class='nav-link text-white'>Logout</a>
+              </li>
+            {{else}}
+              <li class='nav-item ms-auto me-0'>
+                <a href='/signup' class='nav-link text-white'>Sign Up</a>
+              </li>
+              <li class='nav-item'>
+                <a href='/signin' class='nav-link text-white'>Sign In</a>
+              </li>
+            {{/if}}
           </ul>
 
           <a
@@ -72,19 +85,19 @@
         <form
           action='/project/add'
           method='post'
-          id='form'
+          enctype='multipart/form-data'
           class='d-flex flex-column align-items-center'
         >
           <h2>Add Project</h2>
 
           <div class='mb-3 w-100'>
-            <label for='name' class='form-label h5'>Name</label>
+            <label for='title' class='form-label h5'>Title</label>
             <input
-              name='name'
+              name='title'
               type='text'
               class='form-control rounded-pill border-0 shadow-sm'
-              id='name'
-              placeholder='Your name'
+              id='title'
+              placeholder='Project title'
               required
             />
           </div>

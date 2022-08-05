@@ -11,12 +11,12 @@ const signIn = (req, res) => {
   }
 
   db.connect((error, client, done) => {
-    if (error) console.log(error)
+    if (error) return console.log(error)
 
     const query = `SELECT * FROM tb_user WHERE email='${email}'`
 
     client.query(query, (error, result) => {
-      if (error) console.log(error)
+      if (error) return console.log(error)
 
       const user = result.rows
 
@@ -26,9 +26,7 @@ const signIn = (req, res) => {
         return
       }
 
-      const isPasswordCorrect = bcrypt.compareSync(password, user[0].password)
-
-      if (!isPasswordCorrect) {
+      if (!bcrypt.compareSync(password, user[0].password)) {
         req.flash('error', 'Wrong Password!')
         res.redirect('/signin')
         return

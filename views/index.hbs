@@ -189,7 +189,9 @@
 
       <article class='py-5'>
         <section class='container px-0'>
-          <h2 class='text-center mb-5'>My Projects</h2>
+          {{#if projects}}
+            <h2 class='text-center mb-5'>My Projects</h2>
+          {{/if}}
 
           <div class='row'>
             {{#each projects}}
@@ -198,14 +200,13 @@
                   <a href='./project-details/{{this.id}}'>
                     <img
                       class='project-image w-100'
-                      {{! src='/static/assets/images/project-1.png' }}
-                      src='/static/assets/images/{{this.image}}'
-                      alt=''
+                      src='{{this.image}}'
+                      alt='{{this.title}}'
                     />
                   </a>
 
                   <a href='./project-details/{{this.id}}'>
-                    <h5 class='m-0'>{{this.name}}</h5>
+                    <h5 class='m-0'>{{this.title}}</h5>
                   </a>
 
                   <p class='duration m-0'>Development time: {{this.devTime}}</p>

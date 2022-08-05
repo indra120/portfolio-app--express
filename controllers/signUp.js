@@ -1,9 +1,9 @@
 const bcrypt = require('bcrypt')
 const db = require('../connection/db.js')
-const useState = require('../helpers/useState.js')
 
 const signUp = (req, res) => {
   const { name, email, password } = req.body
+  
   if (name === '' || email === '' || password === '') {
     req.flash('warning', 'Please insert all fields')
     res.redirect('/signup')
@@ -11,7 +11,7 @@ const signUp = (req, res) => {
   }
 
   db.connect((error, client, done) => {
-    if (error) console.log(error)
+    if (error) return console.log(error)
 
     const getExistingUser = `SELECT id,password FROM tb_user WHERE email='${email}'`
 
@@ -44,26 +44,25 @@ const signUp = (req, res) => {
         return
       } else {
         const hashedPassword = bcrypt.hashSync(password, 10)
-        const register = `INSERT INTO tb_user(name, email, password) VALUES ('${name}', '${email}', '${hashedPassword}')`
+        const signup = `INSERT INTO tb_user(name, email, password) VALUES ('${name}', '${email}', '${hashedPassword}')`
+        const signin = `SELECT id,name,email FROM tb_user WHERE email='${email}'`
 
-        client.query(register, error => {
-          if (error) console.log(error)
+        client.query(signup, error => {
+          if (error) return console.log(error)
 
-          client.query(
-            `SELECT id,name,email FROM tb_user WHERE email='${email}'`,
-            (error, result) => {
-              const { id, name, email } = result.rows[0]
-              req.session.isLogin = true
-              req.session.user = {
-                id,
-                name,
-                email,
-              }
-
-              done()
-              res.redirect('/')
+          // Auto login after register
+          client.query(signin, (error, result) => {
+            const { id, name, email } = result.rows[0]
+            req.session.isLogin = true
+            req.session.user = {
+              id,
+              name,
+              email,
             }
-          )
+
+            done()
+            res.redirect('/')
+          })
         })
       }
     })
