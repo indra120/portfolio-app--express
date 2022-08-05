@@ -28,7 +28,7 @@ const editProjectPage = (req, res) => {
 
 const editProject = (req, res) => {
   let { title, startDate, endDate, description, techStack } = req.body
-  const { filename } = req.file
+  const filename = req.file?.filename
   const { id } = req.params
 
   if (typeof techStack === 'string') {
@@ -44,8 +44,8 @@ const editProject = (req, res) => {
         start_date='${new Date(startDate).toISOString()}',
         end_date='${new Date(endDate).toISOString()}',
         description='${description}',
-        tech_stack=ARRAY[${techStack.length ? techStack.map(tech => `'${tech}'`).join(',') : techStack}],
-        image='/images/${filename}'
+        tech_stack=ARRAY[${techStack.length ? techStack.map(tech => `'${tech}'`).join(',') : techStack}]
+        ${filename ? `,image='/images/${filename}'` : ''}
       WHERE id=${id}
     `
 

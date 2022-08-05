@@ -85,6 +85,7 @@
         <form
           action='/project/edit/{{project.id}}'
           method='post'
+          id='{{project.id}}'
           enctype='multipart/form-data'
           class='d-flex flex-column align-items-center'
         >
@@ -265,7 +266,6 @@
                 name='image'
                 class='input'
                 id='image'
-                required
               />
               <div
                 class='icon rounded-circle d-flex align-items-center justify-content-center position-absolute'
@@ -307,5 +307,14 @@
         </form>
       </div>
     </main>
+
+    <script>
+      const form = document.getElementsByTagName('form')[0]
+      fetch(`/project/tech-stack/${form.id}`)
+        .then(res => res.json())
+        .then(res => res.tech_stack.forEach(tech => {
+          document.getElementById(tech).checked = true
+        }))
+    </script>
   </body>
 </html>

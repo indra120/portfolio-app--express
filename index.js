@@ -14,6 +14,7 @@ const {
   signIn,
 } = require('./controllers')
 const upload = require('./middlewares/imageUpload')
+const getTechStack = require('./controllers/getTechStack')
 
 const app = express()
 const PORT = 3000
@@ -56,6 +57,12 @@ app.post('/project/add', upload.single('image'), addProject)
 
 app.get('/project/delete/:id', deleteProject)
 
+app.get('/project/tech-stack/:id', async (req, res) => {
+  const { id } = req.params
+  const {tech_stack} = await getTechStack(id)
+
+  res.status(200).json({ tech_stack })
+})
 app.get('/project/edit/:id', editProjectPage)
 app.post('/project/edit/:id', upload.single('image'), editProject)
 
