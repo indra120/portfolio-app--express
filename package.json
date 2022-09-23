@@ -8,15 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/indra120/dumbways-b38-ch2.git"
+    "url": "git+https://github.com/indra120/portfolio-app--express.git"
   },
   "keywords": [],
   "author": "indra120",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/indra120/dumbways-b38-ch2/issues"
+    "url": "https://github.com/indra120/portfolio-app--express/issues"
   },
-  "homepage": "https://github.com/indra120/dumbways-b38-ch2#readme",
+  "homepage": "https://github.com/indra120/portfolio-app--express#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
     "bootstrap": "^5.2.0",
