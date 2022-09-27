@@ -2,6 +2,7 @@ const express = require('express')
 const path = require('path')
 const session = require('express-session')
 const flash = require('express-flash')
+const dotenv = require('dotenv')
 const {
   addProject,
   addProjectPage,
@@ -16,8 +17,10 @@ const {
 const upload = require('./middlewares/imageUpload')
 const getTechStack = require('./controllers/getTechStack')
 
+dotenv.config()
+
 const app = express()
-const PORT = 3000
+const PORT = process.env.PORT || 3000
 
 app.set('view engine', 'hbs')
 
@@ -59,7 +62,7 @@ app.get('/project/delete/:id', deleteProject)
 
 app.get('/project/tech-stack/:id', async (req, res) => {
   const { id } = req.params
-  const {tech_stack} = await getTechStack(id)
+  const { tech_stack } = await getTechStack(id)
 
   res.status(200).json({ tech_stack })
 })
